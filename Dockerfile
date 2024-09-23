@@ -5,14 +5,14 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm ci --legacy-peer-deps
+RUN npm ci
 
 COPY . .
 
 RUN npm run build
 
-# Probuction Container
-FROM gcr.io/distroless/nodejs20-debian12
+# Run Container
+FROM gcr.io/distroless/nodejs20-debian12 AS ruuner
 
 WORKDIR /app
 
